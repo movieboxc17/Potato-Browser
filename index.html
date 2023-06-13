@@ -14,6 +14,7 @@
         }
 
         .navbar {
+            position: relative;
             background-color: #f1f1f1;
             padding: 10px;
             width: 500px; /* Adjust the width as needed */
@@ -39,13 +40,13 @@
 
         .navbar button {
             padding: 10px;
-            background-color: transparent;
+            background-color: #f1f1f1;
             border: none;
             cursor: pointer;
         }
 
         .navbar button:hover {
-            background-color: #f8f9fa;
+            background-color: #e0e0e0;
         }
 
         .navbar button img {
@@ -95,18 +96,35 @@
             background-color: #333;
         }
 
-        body.dark-mode .navbar input[type="text"] {
+        body.dark-mode .navbar input[type="text"],
+        body.dark-mode .navbar button {
+            background-color: #333;
             color: #f1f1f1;
         }
 
         body.dark-mode .navbar button:hover {
             background-color: #444;
         }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 36px;
+            font-family: Aharoni, sans-serif;
+            font-weight: bold;
+            color: #333;
+        }
+
+        body.dark-mode .logo {
+            color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
+    <div class="logo">Potato Browser</div>
     <div class="banner">
-        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+        <button id="darkModeButton" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
     <div class="navbar">
         <input type="text" id="urlInput" placeholder="Type URL" oninput="changeTextColor(this)">
@@ -124,7 +142,13 @@
 
         function toggleDarkMode() {
             var body = document.querySelector('body');
+            var button = document.getElementById('darkModeButton');
             body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                button.textContent = 'Toggle Bright Mode';
+            } else {
+                button.textContent = 'Toggle Dark Mode';
+            }
         }
 
         function changeTextColor(input) {
