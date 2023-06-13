@@ -46,8 +46,7 @@
     <script>
         function navigate() {
             var url = document.getElementById("urlInput").value;
-            var frame = document.getElementById("browserFrame");
-            frame.src = url;
+            window.location.href = "https://" + url;
         }
     </script>
 </body>
