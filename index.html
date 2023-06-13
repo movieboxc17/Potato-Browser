@@ -10,6 +10,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.3s ease;
         }
 
         .navbar {
@@ -66,12 +67,29 @@
         .banner button {
             margin-left: 10px;
         }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #202124;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .navbar {
+            background-color: #333;
+        }
+
+        body.dark-mode .navbar input[type="text"] {
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .navbar button {
+            background-color: #444;
+        }
     </style>
 </head>
 <body>
     <div class="banner">
-        <button onclick="setTheme('light')">Light Mode</button>
-        <button onclick="setTheme('dark')">Dark Mode</button>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
     <div class="navbar">
         <input type="text" id="urlInput" placeholder="Enter URL">
@@ -87,13 +105,9 @@
             window.location.href = "https://" + url;
         }
 
-        function setTheme(theme) {
+        function toggleDarkMode() {
             var body = document.querySelector('body');
-            if (theme === 'dark') {
-                body.classList.add('dark-mode');
-            } else {
-                body.classList.remove('dark-mode');
-            }
+            body.classList.toggle('dark-mode');
         }
     </script>
 </body>
