@@ -19,17 +19,17 @@
             width: 400px; /* Adjust the width as needed */
             display: flex;
             align-items: center;
+            justify-content: flex-end;
             border-radius: 4px;
             box-shadow: 0 1px 6px rgba(32,33,36,0.28);
         }
 
         .navbar input[type="text"] {
-            flex-grow: 1;
             padding: 8px;
             font-size: 14px;
             border: none;
             outline: none;
-            color: black; /* Set the text color to black */
+            width: 100%;
         }
 
         .navbar input[type="text"]::placeholder {
@@ -38,13 +38,18 @@
 
         .navbar button {
             padding: 6px 12px;
-            background-color: #f8f9fa;
+            background-color: transparent;
             border: none;
             cursor: pointer;
         }
 
         .navbar button:hover {
-            background-color: #ddd;
+            background-color: #f8f9fa;
+        }
+
+        .navbar button img {
+            height: 20px;
+            width: 20px;
         }
 
         .browser-window {
@@ -83,7 +88,7 @@
             color: #f1f1f1;
         }
 
-        body.dark-mode .navbar button {
+        body.dark-mode .navbar button:hover {
             background-color: #444;
         }
     </style>
@@ -93,8 +98,10 @@
         <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
     <div class="navbar">
-        <input type="text" id="urlInput" placeholder="Enter URL" oninput="changeTextColor(this)">
-        <button onclick="navigate()">Go</button>
+        <input type="text" id="urlInput" placeholder="Search Google or type URL" oninput="changeTextColor(this)">
+        <button onclick="navigate()">
+            <img src="search-icon.png" alt="Search">
+        </button>
     </div>
     <div class="browser-window">
         <iframe id="browserFrame"></iframe>
