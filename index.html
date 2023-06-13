@@ -32,6 +32,7 @@
             border: none;
             outline: none;
             background-color: transparent;
+            color: #000; /* Black text by default */
         }
 
         .navbar input[type="text"]::placeholder {
@@ -143,16 +144,24 @@
         function toggleDarkMode() {
             var body = document.querySelector('body');
             var button = document.getElementById('darkModeButton');
+            var input = document.getElementById('urlInput');
             body.classList.toggle('dark-mode');
             if (body.classList.contains('dark-mode')) {
                 button.textContent = 'Toggle Bright Mode';
+                input.style.color = '#fff'; /* White text in dark mode */
             } else {
                 button.textContent = 'Toggle Dark Mode';
+                input.style.color = '#000'; /* Black text in bright mode */
             }
         }
 
         function changeTextColor(input) {
-            input.style.color = 'black';
+            var body = document.querySelector('body');
+            if (body.classList.contains('dark-mode')) {
+                input.style.color = '#fff'; /* White text in dark mode */
+            } else {
+                input.style.color = '#000'; /* Black text in bright mode */
+            }
         }
     </script>
 </body>
