@@ -16,20 +16,21 @@
         .navbar {
             background-color: #f1f1f1;
             padding: 10px;
-            width: 400px; /* Adjust the width as needed */
+            width: 500px; /* Adjust the width as needed */
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            border-radius: 4px;
-            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+            border-radius: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .navbar input[type="text"] {
-            padding: 8px;
-            font-size: 14px;
+            flex-grow: 1;
+            padding: 10px;
+            font-size: 16px;
             border: none;
             outline: none;
-            width: 100%;
+            background-color: transparent;
         }
 
         .navbar input[type="text"]::placeholder {
@@ -37,7 +38,7 @@
         }
 
         .navbar button {
-            padding: 6px 12px;
+            padding: 10px;
             background-color: transparent;
             border: none;
             cursor: pointer;
@@ -72,6 +73,16 @@
 
         .banner button {
             margin-left: 10px;
+            padding: 8px 12px;
+            font-size: 14px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .banner button:hover {
+            background-color: #e0e0e0;
         }
 
         /* Dark mode styles */
@@ -98,10 +109,8 @@
         <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
     <div class="navbar">
-        <input type="text" id="urlInput" placeholder="Search Google or type URL" oninput="changeTextColor(this)">
-        <button onclick="navigate()">
-            <img src="search-icon.png" alt="Search">
-        </button>
+        <input type="text" id="urlInput" placeholder="Type URL" oninput="changeTextColor(this)">
+        <button onclick="navigate()">Search</button>
     </div>
     <div class="browser-window">
         <iframe id="browserFrame"></iframe>
