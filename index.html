@@ -46,7 +46,7 @@
         }
 
         .browser-window {
-            height: calc(100vh - 40px);
+            height: calc(100vh - 80px);
         }
 
         iframe {
@@ -54,9 +54,23 @@
             height: 100%;
             border: none;
         }
+
+        .banner {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .banner button {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
+    <div class="banner">
+        <button onclick="setTheme('light')">Light Mode</button>
+        <button onclick="setTheme('dark')">Dark Mode</button>
+    </div>
     <div class="navbar">
         <input type="text" id="urlInput" placeholder="Enter URL">
         <button onclick="navigate()">Go</button>
@@ -69,6 +83,15 @@
         function navigate() {
             var url = document.getElementById("urlInput").value;
             window.location.href = "https://" + url;
+        }
+
+        function setTheme(theme) {
+            var body = document.querySelector('body');
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
         }
     </script>
 </body>
