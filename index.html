@@ -18,16 +18,31 @@
             width: 400px; /* Adjust the width as needed */
             display: flex;
             align-items: center;
+            border-radius: 4px;
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
         }
 
         .navbar input[type="text"] {
             flex-grow: 1;
-            padding: 5px;
+            padding: 8px;
             font-size: 14px;
+            border: none;
+            outline: none;
+        }
+
+        .navbar input[type="text"]::placeholder {
+            color: #888;
         }
 
         .navbar button {
-            padding: 5px 10px;
+            padding: 6px 12px;
+            background-color: #f8f9fa;
+            border: none;
+            cursor: pointer;
+        }
+
+        .navbar button:hover {
+            background-color: #ddd;
         }
 
         .browser-window {
