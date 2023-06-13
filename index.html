@@ -93,7 +93,7 @@
         <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
     <div class="navbar">
-        <input type="text" id="urlInput" placeholder="Enter URL">
+        <input type="text" id="urlInput" placeholder="Enter URL" oninput="changeTextColor(this)">
         <button onclick="navigate()">Go</button>
     </div>
     <div class="browser-window">
@@ -109,6 +109,10 @@
         function toggleDarkMode() {
             var body = document.querySelector('body');
             body.classList.toggle('dark-mode');
+        }
+
+        function changeTextColor(input) {
+            input.style.color = 'black';
         }
     </script>
 </body>
