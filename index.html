@@ -56,7 +56,7 @@
         }
 
         .browser-window {
-            height: calc(100vh - 80px);
+            height: calc(100vh - 160px);
         }
 
         iframe {
@@ -120,6 +120,49 @@
         body.dark-mode .logo {
             color: #f1f1f1;
         }
+
+        .ad-container {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: bottom 0.3s ease;
+        }
+
+        .ad-container.show {
+            bottom: 0;
+        }
+
+        .ad-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-right: 10px;
+        }
+
+        .ad-close {
+            font-size: 16px;
+            color: #f00;
+            cursor: pointer;
+        }
+
+        .ad-close:hover {
+            text-decoration: underline;
+        }
+
+        body.dark-mode .ad-container,
+        body.dark-mode .ad-text {
+            background-color: #333;
+            color: #f1f1f1;
+        }
+
+        body.dark-mode .ad-close {
+            color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
@@ -133,6 +176,10 @@
     </div>
     <div class="browser-window">
         <iframe id="browserFrame"></iframe>
+    </div>
+    <div class="ad-container" id="adContainer">
+        <div class="ad-text">Try our game site <a href="https://movieboxc17.github.io/Teknik.AB_Games/">Teknik.AB_Games</a></div>
+        <div class="ad-close" onclick="closeAd()">X</div>
     </div>
 
     <script>
@@ -163,6 +210,20 @@
                 input.style.color = '#000'; /* Black text in bright mode */
             }
         }
+
+        function showAd() {
+            var adContainer = document.getElementById('adContainer');
+            adContainer.classList.add('show');
+        }
+
+        function closeAd() {
+            var adContainer = document.getElementById('adContainer');
+            adContainer.style.display = 'none';
+        }
+
+        window.addEventListener('load', function () {
+            showAd();
+        });
     </script>
 </body>
 </html>
