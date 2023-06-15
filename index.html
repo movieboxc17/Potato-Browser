@@ -57,6 +57,7 @@
 
         .browser-window {
             height: calc(100vh - 160px);
+            overflow: auto;
         }
 
         iframe {
@@ -131,10 +132,7 @@
             align-items: center;
             justify-content: center;
             transition: bottom 0.3s ease;
-        }
-
-        .ad-container.show {
-            bottom: 0;
+            z-index: 9999;
         }
 
         .ad-text {
@@ -185,7 +183,8 @@
     <script>
         function navigate() {
             var url = document.getElementById("urlInput").value;
-            window.location.href = "https://" + url;
+            var frame = document.getElementById("browserFrame");
+            frame.src = "https://" + url;
         }
 
         function toggleDarkMode() {
