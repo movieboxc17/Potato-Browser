@@ -1,45 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Potato Browser</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
+            background-color: #f7f7f7;
+            color: #333;
             transition: background-color 0.3s ease;
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
         }
 
-        .header h1 {
+        header h1 {
             font-size: 36px;
+            margin: 0;
             font-weight: bold;
-            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
         .dark-mode-button {
-            padding: 10px 20px;
-            font-size: 16px;
             background-color: #333;
-            border: none;
-            border-radius: 4px;
             color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .dark-mode-button:hover {
@@ -50,10 +54,6 @@
             display: flex;
             align-items: center;
             margin-top: 20px;
-            padding: 10px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 30px;
         }
 
         .search-input {
@@ -61,6 +61,7 @@
             padding: 10px;
             font-size: 16px;
             border: none;
+            border-radius: 5px 0 0 5px;
             outline: none;
         }
 
@@ -69,9 +70,10 @@
             font-size: 16px;
             background-color: #333;
             border: none;
-            border-radius: 4px;
+            border-radius: 0 5px 5px 0;
             color: #fff;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .search-button:hover {
@@ -79,11 +81,11 @@
         }
 
         .browser-window {
-            height: 70vh;
-            width: 80%;
-            margin: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            height: 60vh;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         iframe {
@@ -93,17 +95,14 @@
         }
 
         .ad-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             position: fixed;
             bottom: -100%;
             left: 0;
             width: 100%;
-            padding: 10px;
-            background-color: #fff;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
             transition: bottom 0.3s ease;
         }
 
@@ -112,39 +111,21 @@
         }
 
         .ad-text {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            margin-bottom: 10px;
-            text-align: center;
         }
 
         .ad-link {
+            color: #ff5722;
             text-decoration: none;
-        }
-
-        .ad-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #ff5722;
-            border: none;
-            border-radius: 4px;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .ad-button:hover {
-            background-color: #e64a19;
+            font-weight: bold;
+            margin-left: 5px;
         }
 
         .ad-close {
             font-size: 20px;
-            color: #333;
             cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .ad-close:hover {
-            color: #ff5722;
+            margin-top: 5px;
         }
 
         /* Dark mode styles */
@@ -153,75 +134,60 @@
             color: #f1f1f1;
         }
 
-        .header.dark-mode {
-            background-color: #333;
+        header.dark-mode {
+            background-color: #444;
         }
 
-        .dark-mode-button.dark-mode {
-            background-color: #fff;
-            color: #333;
+        header.dark-mode h1 {
+            color: #fff;
         }
 
-        .search-container.dark-mode {
+        .container.dark-mode {
             background-color: #333;
+            color: #f1f1f1;
         }
 
         .search-input.dark-mode {
-            background-color: transparent;
+            background-color: #444;
             color: #fff;
         }
 
         .search-button.dark-mode {
-            background-color: #fff;
-            color: #333;
-        }
-
-        .browser-window.dark-mode {
-            background-color: #333;
-        }
-
-        .ad-container.dark-mode {
-            background-color: #333;
-        }
-
-        .ad-text.dark-mode {
-            color: #f1f1f1;
-        }
-
-        .ad-button.dark-mode {
-            background-color: #ff5722;
+            background-color: #444;
             color: #fff;
         }
 
-        .ad-button.dark-mode:hover {
-            background-color: #e64a19;
+        .browser-window.dark-mode {
+            border: 1px solid #888;
         }
 
-        .ad-close.dark-mode {
+        .ad-container.dark-mode {
+            background-color: #444;
             color: #f1f1f1;
+        }
+
+        .ad-link.dark-mode {
+            color: #ff5722;
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header>
         <h1>Potato Browser</h1>
+    </header>
+    <div class="container">
         <button class="dark-mode-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
-    </div>
-    <div class="search-container">
-        <input class="search-input" type="text" id="urlInput" placeholder="Type URL" oninput="changeTextColor(this)">
-        <button class="search-button" onclick="navigate()">Search</button>
-    </div>
-    <div class="browser-window">
-        <iframe id="browserFrame"></iframe>
-    </div>
-    <div class="ad-container" id="adContainer">
-        <div class="ad-content">
+        <div class="search-container">
+            <input class="search-input" type="text" id="urlInput" placeholder="Type URL" oninput="changeTextColor(this)">
+            <button class="search-button" onclick="navigate()">Search</button>
+        </div>
+        <div class="browser-window">
+            <iframe id="browserFrame"></iframe>
+        </div>
+        <div class="ad-container" id="adContainer">
             <div class="ad-text">
                 Discover exciting games at <a class="ad-link" href="https://movieboxc17.github.io/Teknik.AB_Games/" target="_blank">Teknik.AB_Games</a>!
             </div>
-            <a class="ad-link" href="https://movieboxc17.github.io/Teknik.AB_Games/" target="_blank">
-                <button class="ad-button">Explore Now</button>
-            </a>
             <div class="ad-close" onclick="closeAd()">X</div>
         </div>
     </div>
