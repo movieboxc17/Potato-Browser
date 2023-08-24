@@ -86,6 +86,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             overflow: hidden;
+            background-color: #fff;
         }
 
         iframe {
@@ -159,6 +160,7 @@
 
         .browser-window.dark-mode {
             border: 1px solid #888;
+            background-color: #202124;
         }
 
         .ad-container.dark-mode {
@@ -181,7 +183,7 @@
             <input class="search-input" type="text" id="urlInput" placeholder="Type URL" oninput="changeTextColor(this)">
             <button class="search-button" onclick="navigate()">Search</button>
         </div>
-        <div class="browser-window">
+        <div class="browser-window" id="browserWindow">
             <iframe id="browserFrame"></iframe>
         </div>
         <div class="ad-container" id="adContainer">
@@ -202,17 +204,20 @@
             var body = document.querySelector('body');
             var buttons = document.querySelectorAll('.dark-mode-button');
             var inputs = document.querySelectorAll('.search-input');
+            var browserWindow = document.getElementById('browserWindow');
 
             body.classList.toggle('dark-mode');
             buttons.forEach(button => button.classList.toggle('dark-mode'));
             inputs.forEach(input => input.classList.toggle('dark-mode'));
-
+            
             if (body.classList.contains('dark-mode')) {
                 buttons.forEach(button => button.textContent = 'Light Mode');
                 inputs.forEach(input => input.style.color = '#fff');
+                browserWindow.style.backgroundColor = '#202124';
             } else {
                 buttons.forEach(button => button.textContent = 'Dark Mode');
                 inputs.forEach(input => input.style.color = '#000');
+                browserWindow.style.backgroundColor = '#fff';
             }
         }
 
