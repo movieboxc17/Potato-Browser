@@ -6,57 +6,84 @@
         body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             transition: background-color 0.3s ease;
         }
 
-        .navbar {
-            position: relative;
-            background-color: #f1f1f1;
-            padding: 10px;
-            width: 500px; /* Adjust the width as needed */
+        .header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: flex-end;
-            border-radius: 30px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .navbar input[type="text"] {
+        .header h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .dark-mode-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .dark-mode-button:hover {
+            background-color: #444;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+        }
+
+        .search-input {
             flex-grow: 1;
             padding: 10px;
             font-size: 16px;
             border: none;
             outline: none;
-            background-color: transparent;
-            color: #000; /* Black text by default */
         }
 
-        .navbar input[type="text"]::placeholder {
-            color: #888;
-        }
-
-        .navbar button {
-            padding: 10px;
-            background-color: #f1f1f1;
+        .search-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
             border: none;
+            border-radius: 4px;
+            color: #fff;
             cursor: pointer;
         }
 
-        .navbar button:hover {
-            background-color: #e0e0e0;
-        }
-
-        .navbar button img {
-            height: 20px;
-            width: 20px;
+        .search-button:hover {
+            background-color: #444;
         }
 
         .browser-window {
-            height: calc(100vh - 160px);
+            height: 70vh;
+            width: 80%;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         iframe {
@@ -65,71 +92,18 @@
             border: none;
         }
 
-        .banner {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .banner button {
-            margin-left: 10px;
-            padding: 8px 12px;
-            font-size: 14px;
-            background-color: #f1f1f1;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .banner button:hover {
-            background-color: #e0e0e0;
-        }
-
-        /* Dark mode styles */
-        body.dark-mode {
-            background-color: #202124;
-            color: #f1f1f1;
-        }
-
-        body.dark-mode .navbar {
-            background-color: #333;
-        }
-
-        body.dark-mode .navbar input[type="text"],
-        body.dark-mode .navbar button {
-            background-color: #333;
-            color: #f1f1f1;
-        }
-
-        body.dark-mode .navbar button:hover {
-            background-color: #444;
-        }
-
-        .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 36px;
-            font-family: Aharoni, sans-serif;
-            font-weight: bold;
-            color: #333;
-        }
-
-        body.dark-mode .logo {
-            color: #f1f1f1;
-        }
-
         .ad-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             position: fixed;
             bottom: -100%;
             left: 0;
             width: 100%;
-            background-color: #f1f1f1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
             transition: bottom 0.3s ease;
         }
 
@@ -137,16 +111,11 @@
             bottom: 0;
         }
 
-        .ad-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .ad-text {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
+            text-align: center;
         }
 
         .ad-link {
@@ -156,7 +125,7 @@
         .ad-button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #ff5722; /* A professional color */
+            background-color: #ff5722;
             border: none;
             border-radius: 4px;
             color: #fff;
@@ -164,30 +133,83 @@
         }
 
         .ad-button:hover {
-            background-color: #e64a19; /* A slightly darker shade on hover */
+            background-color: #e64a19;
         }
 
         .ad-close {
             font-size: 20px;
-            color: #333333;
+            color: #333;
             cursor: pointer;
             margin-top: 10px;
         }
 
         .ad-close:hover {
-            color: #ff5722; /* Match the button color on hover */
+            color: #ff5722;
         }
 
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: #202124;
+            color: #f1f1f1;
+        }
+
+        .header.dark-mode {
+            background-color: #333;
+        }
+
+        .dark-mode-button.dark-mode {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .search-container.dark-mode {
+            background-color: #333;
+        }
+
+        .search-input.dark-mode {
+            background-color: transparent;
+            color: #fff;
+        }
+
+        .search-button.dark-mode {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .browser-window.dark-mode {
+            background-color: #333;
+        }
+
+        .ad-container.dark-mode {
+            background-color: #333;
+        }
+
+        .ad-text.dark-mode {
+            color: #f1f1f1;
+        }
+
+        .ad-button.dark-mode {
+            background-color: #ff5722;
+            color: #fff;
+        }
+
+        .ad-button.dark-mode:hover {
+            background-color: #e64a19;
+        }
+
+        .ad-close.dark-mode {
+            color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
-    <div class="logo">Potato Browser</div>
-    <div class="banner">
-        <button id="darkModeButton" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <div class="header">
+        <h1>Potato Browser</h1>
+        <button class="dark-mode-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
-    <div class="navbar">
-        <input type="text" id="urlInput" placeholder="Type URL" oninput="changeTextColor(this)">
-        <button onclick="navigate()">Search</button>
+    <div class="search-container">
+        <input class="search-input" type="text" id="urlInput" placeholder="Type URL" oninput="changeTextColor(this)">
+        <button class="search-button" onclick="navigate()">Search</button>
     </div>
     <div class="browser-window">
         <iframe id="browserFrame"></iframe>
@@ -195,7 +217,7 @@
     <div class="ad-container" id="adContainer">
         <div class="ad-content">
             <div class="ad-text">
-                Discover exciting games at Teknik.AB_Games!
+                Discover exciting games at <a class="ad-link" href="https://movieboxc17.github.io/Teknik.AB_Games/" target="_blank">Teknik.AB_Games</a>!
             </div>
             <a class="ad-link" href="https://movieboxc17.github.io/Teknik.AB_Games/" target="_blank">
                 <button class="ad-button">Explore Now</button>
@@ -212,24 +234,28 @@
 
         function toggleDarkMode() {
             var body = document.querySelector('body');
-            var button = document.getElementById('darkModeButton');
-            var input = document.getElementById('urlInput');
+            var buttons = document.querySelectorAll('.dark-mode-button');
+            var inputs = document.querySelectorAll('.search-input');
+
             body.classList.toggle('dark-mode');
+            buttons.forEach(button => button.classList.toggle('dark-mode'));
+            inputs.forEach(input => input.classList.toggle('dark-mode'));
+
             if (body.classList.contains('dark-mode')) {
-                button.textContent = 'Toggle Bright Mode';
-                input.style.color = '#fff'; /* White text in dark mode */
+                buttons.forEach(button => button.textContent = 'Light Mode');
+                inputs.forEach(input => input.style.color = '#fff');
             } else {
-                button.textContent = 'Toggle Dark Mode';
-                input.style.color = '#000'; /* Black text in bright mode */
+                buttons.forEach(button => button.textContent = 'Dark Mode');
+                inputs.forEach(input => input.style.color = '#000');
             }
         }
 
         function changeTextColor(input) {
             var body = document.querySelector('body');
             if (body.classList.contains('dark-mode')) {
-                input.style.color = '#fff'; /* White text in dark mode */
+                input.style.color = '#fff';
             } else {
-                input.style.color = '#000'; /* Black text in bright mode */
+                input.style.color = '#000';
             }
         }
 
