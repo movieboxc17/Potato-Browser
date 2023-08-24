@@ -137,32 +137,47 @@
             bottom: 0;
         }
 
-        .ad-text {
-            font-size: 16px;
-            font-weight: bold;
-            color: #000;
-            margin-right: 10px;
+        .ad-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .ad-close {
+        .ad-text {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .ad-link {
+            text-decoration: none;
+        }
+
+        .ad-button {
+            padding: 10px 20px;
             font-size: 16px;
-            color: #f00;
+            background-color: #ff5722; /* A professional color */
+            border: none;
+            border-radius: 4px;
+            color: #fff;
             cursor: pointer;
         }
 
+        .ad-button:hover {
+            background-color: #e64a19; /* A slightly darker shade on hover */
+        }
+
+        .ad-close {
+            font-size: 20px;
+            color: #333333;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
         .ad-close:hover {
-            text-decoration: underline;
+            color: #ff5722; /* Match the button color on hover */
         }
 
-        body.dark-mode .ad-container,
-        body.dark-mode .ad-text {
-            background-color: #333;
-            color: #f1f1f1;
-        }
-
-        body.dark-mode .ad-close {
-            color: #f1f1f1;
-        }
     </style>
 </head>
 <body>
@@ -178,8 +193,15 @@
         <iframe id="browserFrame"></iframe>
     </div>
     <div class="ad-container" id="adContainer">
-        <div class="ad-text">Try our game site <a href="https://movieboxc17.github.io/Teknik.AB_Games/">Teknik.AB_Games</a></div>
-        <div class="ad-close" onclick="closeAd()">X</div>
+        <div class="ad-content">
+            <div class="ad-text">
+                Discover exciting games at Teknik.AB_Games!
+            </div>
+            <a class="ad-link" href="https://movieboxc17.github.io/Teknik.AB_Games/" target="_blank">
+                <button class="ad-button">Explore Now</button>
+            </a>
+            <div class="ad-close" onclick="closeAd()">X</div>
+        </div>
     </div>
 
     <script>
