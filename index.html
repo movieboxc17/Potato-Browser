@@ -159,7 +159,6 @@
 
         .browser-window.dark-mode {
             border: 1px solid #888;
-            background-color: #202124;
         }
 
         .ad-container.dark-mode {
@@ -213,10 +212,12 @@
                 buttons.forEach(button => button.textContent = 'Light Mode');
                 inputs.forEach(input => input.style.color = '#fff');
                 browserWindow.style.backgroundColor = '#202124';
+                body.style.backgroundColor = '#202124'; /* Set body background color in dark mode */
             } else {
                 buttons.forEach(button => button.textContent = 'Dark Mode');
                 inputs.forEach(input => input.style.color = '#000');
                 browserWindow.style.backgroundColor = '#fff';
+                body.style.backgroundColor = '#fff'; /* Set body background color in light mode */
             }
         }
 
